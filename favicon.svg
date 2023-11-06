@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="logo" width="100%" height="100%" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+<defs><linearGradient id="bluepurple" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#935CFF;stop-opacity:1" /><stop offset="100%" style="stop-color:#124BB0;stop-opacity:1" /></linearGradient></defs>
+<g id="ElectricAzimuth" transform="matrix(1.28566,0,0,1.28566,-47.6449,-178.445)">
+<g id="Azimuth" transform="matrix(0.933412,0,-2.07259e-16,0.933412,-32.9572,-12.3199)">
+    <path d="M75.011,361.902L75.024,361.907L75.014,361.907L75.011,361.902ZM200.011,311.902L75.011,361.902L200.011,161.897L200.011,311.902Z" fill='url(#bluepurple)' />
+</g>
+<g id="Electric" transform="matrix(1.12059,0,0,1.02773,-260.895,-87.1009)">
+    <path d="M370.001,219.817L370.001,356.045L432.485,328.793L474.121,401.432L474.121,259.674L409.125,288.039L370.001,219.817Z" fill='url(#bluepurple)' />
+</g>
+</g>
+</svg>
