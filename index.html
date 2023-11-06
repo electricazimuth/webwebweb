@@ -1,0 +1,481 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Electric Azimuth | Digital Engineering, Design and Development</title>
+  <meta name="description" content="Electric Azimuth">
+  <meta name="author" content="Electric Azimuth Limited">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> 
+  <link rel="icon" href="/favicon.svg">
+  <style>
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
+
+header{
+  border-bottom: 1px solid rgb(33, 33, 251);
+}
+header h1{
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.7em;
+
+}
+header .el{
+  color: #D7DEFF;  
+}
+header .az{
+  color: #D7CBFF;  
+  font-size: 44px;
+}
+
+.bg-azimuth{
+  color: white;
+  background: rgb(147,92,255);
+  background: linear-gradient(45deg, rgba(147,92,255,1) 0%, rgba(18,75,176,1) 100%);
+}
+
+.my-6{
+  margin-top: 7em;
+  margin-bottom: 7em;
+}
+.py-6{
+  padding-top: 7em !important;
+  padding-bottom: 7em !important;
+}
+
+.bg-shand{
+  background-image: url("/assets/blend-shadowhand.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 20%;
+  min-height: 230px;
+}
+.bg-simrender{
+  background-image: url("assets/sim-rendering.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 60%;
+  min-height: 230px;
+}
+
+.bg-grip{
+  background-image: url("assets/gripper-bolts.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 60%;
+  min-height: 230px;
+}
+
+.bg-code{
+  background-image: url("assets/code-light.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 60%;
+  min-height: 230px;
+}
+.bg-sys{
+  background-image: url("assets/nut-system.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 0%;
+  min-height: 230px;
+}
+.bg-bar{
+  background-image: url("assets/bar-chart.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 80%;
+  min-height: 230px;
+}
+
+.bg-swrl{
+  background-image: url("assets/swirl.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 80%;
+  min-height: 230px;
+}
+.bg-label{
+  background-image: url("assets/labeling.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 20%;
+  min-height: 230px;
+}
+
+.bg-digitech a, .bg-digitech h1{
+  text-shadow: 0.01em 0.01em 0.2em black
+}
+.bg-azim{
+  background-color: #1e0080;
+  border-bottom: 14px solid rgb(147,92,255);
+}
+.bg-digitech{
+  background-color: #2e00c5;
+  box-shadow:
+  inset 60px 0 250px rgb(111, 0, 111),  /* left magenta */
+  inset -60px 0 290px rgb(19, 116, 116); /* right cyan */
+  overflow: hidden;
+  border-bottom: 14px solid rgb(147,92,255);
+}
+
+.z-over{
+  z-index:1000;
+}
+
+.knoll_cover{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 80%;
+  position: absolute;
+  top: 0px;
+  left:0px;
+  right:0;
+  bottom:0;
+  z-index:200;
+  mix-blend-mode: overlay;
+
+}
+.bg_knoll_sm{
+  background-image: url("assets/knoll_sm.jpg");
+  background-position: 50% 80%;
+}
+.bg_knoll_md{
+  background-image: url("assets/knoll_md.jpg");
+  background-position: 50% 80%;
+}
+.bg_knoll_lg{
+  background-image: url("assets/knoll_lg.jpg");
+  background-position: 50% 80%;
+}
+
+/* LIGHTING FX */
+.lightingfx{
+  animation: spin 16s linear infinite;
+  position: relative;
+  box-shadow: -5px -15px 80px 20px rgba(62, 165, 255, 0.25), 50px 50px 100px 50px rgba(118, 87, 254, 0.15);
+  display: inline-block;
+  background-color: #000;
+  z-index:99;
+}
+
+.lightingfx:nth-child(2) {
+  left:40%;
+  top:10%;
+  animation: spinrev 22s linear infinite;
+}
+.lightingfx:nth-child(3) {
+  left:55%;
+  top:30%;
+  animation: spin 19s linear infinite;
+}
+.lightingfx:nth-child(4) {
+  left:70%;
+  top:15%;
+  animation: spinrev 18s linear infinite;
+}
+
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  60%{
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes spinrev {
+  0%{
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+/* box-shadow: h-offset v-offset blur spread color |inset|initial|inherit; */
+.lightingfx::before, .lightingfx::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  width: 0px;
+  height: 0px;
+  z-index: 101;
+  box-shadow: 0 0 220px 100px rgba(255, 116, 157, 0.25), 50px 50px 200px 90px rgba(101, 183, 255, 0.25);
+  transition: opacity 8s, transform 8s;
+}
+
+.lightingfx:nth-child(2)::before {
+  box-shadow: 0 0 220px 100px rgba(42, 141, 255, 0.25), 50px 50px 200px 90px rgba(94, 113, 255, 0.25);
+}
+.lightingfx:nth-child(2)::after{
+  box-shadow: 0 0 320px 100px rgba(255, 86, 137, 0.25), 50px 50px 500px 90px rgba(51, 158, 251, 0.25);
+}
+
+.lightingfx:nth-child(3)::before {
+  box-shadow: 0 10px 420px 100px rgba(209, 42, 255, 0.20), 60px 70px 300px 90px rgba(94, 113, 255, 0.25);
+}
+.lightingfx:nth-child(3)::after{
+  box-shadow: 0 0 250px 100px rgba(255, 86, 137, 0.35), 50px 55px 200px 90px rgba(255, 14, 102, 0.20);
+}
+
+.lightingfx:nth-child(4)::before {
+  box-shadow: 0 10px 220px 100px rgba(200, 0, 255, 0.2), 60px 70px 200px 90px rgba(98, 0, 218, 0.25);
+}
+.lightingfx:nth-child(4)::after{
+  box-shadow: 0 20px 260px 100px rgba(25, 94, 255, 0.35), 40px 45px 210px 90px rgba(82, 14, 255, 0.2);
+}
+
+.lightingfx::before {
+  transform: translateX(-300px);
+  opacity: 1;
+}
+
+.lightingfx::after {
+  transform: translateX(400px);
+  opacity: 1;
+}
+</style>
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <header class="text-bg-dark p-3" style="background-color: black !important;">
+    <div class="container">
+      <div class="row">
+
+        <div id="logo" class="col-1">
+          <svg id="logo" width="80px" height="80px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <defs>
+              <linearGradient id="bluepurple" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#935CFF;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#124BB0;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <g id="ElectricAzimuth" transform="matrix(1.28566,0,0,1.28566,-47.6449,-178.445)">
+                <g id="Azimuth" transform="matrix(0.933412,0,-2.07259e-16,0.933412,-32.9572,-12.3199)">
+                    <path d="M75.011,361.902L75.024,361.907L75.014,361.907L75.011,361.902ZM200.011,311.902L75.011,361.902L200.011,161.897L200.011,311.902Z" fill='url(#bluepurple)' />
+                </g>
+                <g id="Electric" transform="matrix(1.12059,0,0,1.02773,-260.895,-87.1009)">
+                    <path d="M370.001,219.817L370.001,356.045L432.485,328.793L474.121,401.432L474.121,259.674L409.125,288.039L370.001,219.817Z" fill='url(#bluepurple)' />
+                </g>
+            </g>
+          </svg>
+        </div>
+        <div class="col-2 text-end pt-2">
+          <h1 class="p-0 m-0 el ">electric</h1><h1 class="p-0 m-0 az ">AZIMUTH</h1>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+
+  <section class="text-bg-dark px-3 py-6 bg-digitech position-relative">
+    
+    <div class="container ">
+      
+
+
+      
+      <div class="lightingfx"></div>
+      <div class="lightingfx"></div>
+      <div class="lightingfx"></div>
+      <div class="lightingfx"></div>
+
+      <div class="row z-over">
+        <div class="col-8 offset-2 z-over">
+          <h1 class="text-center z-over">Using digital technology to deliver incredible projects</h1>
+          <p class="text-center z-over"><a href="https://azimuth.substack.com">Read our blog</a></p>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="bg_knoll_sm knoll_cover d-sm-block d-lg-none"></div>
+    <div class="bg_knoll_md knoll_cover d-none d-lg-block d-xl-none"></div>
+    <div class="bg_knoll_lg knoll_cover d-none d-xl-block"></div>
+
+
+  </section>
+
+  <section class="text-bg-dark px-3 py-6">
+    <div class="container">
+
+      <div class="row my-5">
+        <div class="col-md">
+          <h2>Digital Engineering</h2>
+          <p>At Electric Azimuth we use technology to craft interactive digital designs, develop solutions in a virtual space throughout their development and lifecycle. From website design and development, video games, machine learning simulations to interactive mobile apps
+
+
+          </p>
+        </div>
+        <div class="col-md mx-md-5 bg-grip">
+        </div>  
+      </div>
+
+      <div class="row my-5">
+        <div class="col-md mx-md-5 order-md-2">
+          <h2 class="mt-md-5">Digital Twins</h2>
+          <p>Digital twins are virtual models of physical objects or systems that are updated from real-time data and use simulation, machine learning, and reasoning to help decision making. They're linked to real data sources from the environment, which means that the twin updates in real time to reflect the original version. Digital twins enable engineers to explore possibilities and develop solutions in a virtual space, rather than relying on physical prototypes. They have greater ultimate potential to improve products and processes.</p>
+        </div>
+        <div class="col-md my-md-5 bg-shand">
+        </div>  
+      </div>
+
+      <div class="row my-5">
+        <div class="col-md ">
+          <h2>Digital Synthesis</h2>
+          <p>We synthesize datasets from digital models to feed into machine learning models. In a digital environments we can synthesise data easier and faster with much more flexibility and avoid the rain. 
+            These datasets help us evaluate and validate approaches before going all in on an unproven solution. It allows a fast repeatable way to test configurations. In a recent project we tested camera positions, 
+            sensor types (colour, depth and lidar) while also capturing a ground truth footage for comparison, before expensive setups and testing in the real world.</p>
+        </div>
+        <div class="col-md mx-md-5 bg-simrender">
+        </div>  
+      </div>
+
+      <div class="row my-5">
+        <div class="col-md mx-md-5 order-md-2">
+          <h2 class="mt-md-5">Audio ai engineering</h2>
+          <p>We are currently working on English text to singing models which we are aiming to use on delightful interactive entertainment. Allowing customisation of singing phrases and vocals which can adapt for each listener and their environment.</p>
+        </div>
+        <div class="col-md my-md-5 bg-label">
+        </div>  
+      </div>
+
+
+    </div>
+  </section>
+
+
+
+
+
+  <section class="px-3 py-6">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-md">
+          <div class="m-3 p-3 bg-light rounded bg-code">
+            <h2>Prototyping</h2>
+            <p class="w-75">Often the first part of any project is creating a proof of concept, wether its a loose set of scripts plumbed together or digital 3d models simulations. <br>We often use C#, Python, Blender, Unity or Mujoco.</p>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="m-3 p-3 bg-light rounded bg-sys">
+            <h2>System Design</h2>
+            <p>Once prototyping and proof of concepts have proven the approach we move onto looking at the business requirements and were they may move to in the future, attempting to author a overall system design that will be deliverable and flexible enough for future requirements. </p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md">
+          <div class="m-3 p-3 bg-light rounded bg-bar">
+            <h2>User Experience</h2>
+            <p>User experience testing is an essential part of the design process. It allows us to validate our approach and ensure that our designs are focused on the end user. By testing the interfaces, we can determine whether they are usable, abstracted, or granular, and make necessary adjustments to improve the overall user experience.</p>
+          </div>
+          
+        </div>
+        <div class="col-md">
+          <div class="m-3 p-3 bg-light rounded bg-swrl">
+            <h2>Agile and responsive</h2>
+            <p>Project goals and aims can change and we fully understand business needs, we are agile and responsive to change</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="text-white pb-3 pt-5 py-6 bg-azim ">
+    <div class="container">
+      <h2>Why work with Electric Azimuth?</h2>
+      <p>We are a small flexible team, giving your project the attention you need and want, we commit to your project until it is finished. You get consistency of working with the same dedicated team
+        We get to knows and understands your business and goals</p>
+    </div>
+  </section>
+
+  <section class="text-bg-dark px-3 pt-5 py-3">
+    <div class="container">
+      <h2>Frequently asked questions</h2>
+
+      <h4>Where can I find out more about the projects Electric Azimuth work on?</h4>
+      <p class="mb-5">Substack is where we write our development log <a href="https://azimuth.substack.com/">https://azimuth.substack.com/</a> </p>
+
+      <h4>What's your approach to web and mobile design</h4>
+      <p class="mb-5">Mobile design is all about crafting intuitive designs tailored to the platform. For web design, the focus is on creating a lasting digital impact, 
+        while mobile design emphasizes seamless user engagement in a mobile-centric world. The distinct strategies for each platform ensure an optimal user experience, irrespective of the device used.</p>
+    
+      <h4>What's your approach to prototyping</h4>
+      <p class="mb-5">Prototyping is crucial for visualizing the final product and gathering early feedback, and finding early on any show stopping issues. 
+        By creating working proof of concepts we get a far better understanding of the digital engineering issues we will face on our way to production. 
+        Prototyping transforms concepts into tangible (often clickable) visuals, bridging the gap between imagination and reality. 
+        This iterative process of prototyping, testing, and refining helps identify design issues early, saving time and resources in the long run.</p>
+
+      <h4>Can you build me an AI model to do xxxxxx?</h4>
+      <p class="mb-5">Electric Azimuth has experience in both building our own algorythms for machine learning, using the ones out in the wild and putting them into production environments. TLDR: Its possible, lets have a chat</p>  
+
+      <h4>Can you offer fixed prices?</h4>
+      <p class="mb-5">Our design and development is an iterative process, where we regularly test and refine designs and deliverables to ensure that they meet the needs of your target audience. 
+        Often we can break down the process into phases which can be estimated, it works best when each cycle is highly focused on specific, measurable improvements with tight  
+        collaboration during design to drive product design in the right direction.</p>
+      
+      <h4>What's with the name?</h4>
+      <p class="mb-5">the word <em>azimuth</em> originates from medieval Arabic <em>as-samt</em> meaning <em>the way</em> or <em>direction</em>. 
+        The azimuth is used to help get your bearings when navigating using the stars, moon or sun.</p>
+
+
+
+    </div>
+  </section>
+
+
+  <footer>
+
+    <div class="container mt-5">
+
+      <div class="p-4 text-center bg-azimuth rounded mb-3 align-items-center">
+
+        <h2 class="mt-3">Get in touch</h2>
+        <div class="row">
+          <p class="col-6 offset-3">If you're looking for a team that's passionate about doing great work and loves to collaborate, then we're the perfect match</p>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg">
+            <h3>+44 (0)1404 849270</h3>
+            <p>We're here Monday to Friday,<br>9am to 5pm UK time</p>
+          </div>
+          <div class="col-lg">
+            <h3>hello@electric-azimuth.co.uk</h3>
+            <p>We aim to reply to emails within one working day.</p>
+          </div>
+          <p>Electric Azimuth, Colliton Barton, Honiton EX14 3LJ</p>
+        </div>
+
+      </div>
+
+      <p class="mt-5 text-center text-muted">&copy; 2023 Electric Azimuth Limited. Company No 13759494. All rights reserved.    </p>
+    </div>
+  </footer>
+</body>
+</html>
